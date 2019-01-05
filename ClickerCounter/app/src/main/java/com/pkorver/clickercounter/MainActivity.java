@@ -2,6 +2,8 @@ package com.pkorver.clickercounter;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.Touch;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
@@ -31,4 +33,10 @@ public class MainActivity extends AppCompatActivity {
         counterValue.setText(Integer.toString(counter));
     }
 
+    //Does not do what I want it to do yet
+    public boolean onTouch(MotionEvent e) {
+        counter++;
+        counterValue.setText(Integer.toString(counter));
+        return true;
+    }
 }
