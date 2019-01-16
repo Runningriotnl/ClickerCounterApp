@@ -1,5 +1,7 @@
 package com.pkorver.clickercounter;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.Touch;
@@ -21,22 +23,40 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void countIncrease(View view) {
-        // On each click the counter will increase 1 point
-        counter++;
-        counterValue.setText(Integer.toString(counter));
+    public void countReset(View view) {
+        // Ask for confirmation
+        createDialog();
     }
 
-    public void countDecrease(View v) {
-        // On each click remove 1 point from counter
-        counter--;
-        counterValue.setText(Integer.toString(counter));
+    private void createDialog() {
+        // Dialog to ask for confirmation on reset
+        AlertDialog.Builder resetDialog = new AlertDialog.Builder(this);
+        resetDialog.setMessage("Are you sure you want to reset the counter?");
+        // No cancel button, just yes or no
+        resetDialog.setCancelable(false);
+        resetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // Resets the counter to 0 if positive
+                counter = 0;
+                counterValue.setText(Integer.toString(counter));
+            }
+        });
+
+        resetDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+        resetDialog.create().show();
+
     }
 
-    //Does not do what I want it to do yet
-    public boolean onTouch(MotionEvent e) {
+    //Increases count if screen is touched
+    public void screenTapped(View view) {
         counter++;
         counterValue.setText(Integer.toString(counter));
-        return true;
     }
 }
