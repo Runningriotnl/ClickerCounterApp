@@ -23,24 +23,20 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/resetButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="countReset"
-        android:text="Reset"
-        tools:layout_editor_absoluteX="5dp"
-        tools:layout_editor_absoluteY="0dp" />
-
-    <Button
-        android:id="@+id/challengeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <TextView
+        android:id="@+id/countDown"
+        android:layout_width="105dp"
+        android:layout_height="96dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:onClick="goToChallenge"
-        android:text="10 Second Challenge"
+        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="0dp" />
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </android.support.constraint.ConstraintLayout>

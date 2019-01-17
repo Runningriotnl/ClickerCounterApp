@@ -1,6 +1,7 @@
 package com.pkorver.clickercounter;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -58,5 +59,11 @@ public class MainActivity extends AppCompatActivity {
     public void screenTapped(View view) {
         counter++;
         counterValue.setText(Integer.toString(counter));
+    }
+
+    public void goToChallenge(View view) {
+        Intent intent = new Intent(this, TenSecondClickerActivity.class);
+        startActivity(intent);
+
     }
 }
