@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToChallenge(View view) {
-        Intent intent = new Intent(this, TenSecondClickerActivity.class);
+        Intent intent = new Intent(MainActivity.this, TenSecondClickerActivity.class);
         startActivity(intent);
 
     }

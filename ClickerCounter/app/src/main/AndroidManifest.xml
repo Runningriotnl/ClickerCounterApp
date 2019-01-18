@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".TenSecondClickerActivity">
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
         </activity>
     </application>
 
