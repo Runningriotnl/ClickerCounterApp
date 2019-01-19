@@ -19,20 +19,7 @@ public class TenSecondClickerActivity extends AppCompatActivity {
 
         counterValue = (TextView) findViewById(R.id.value);
     }
-
-    //TextView countDown = findViewById(R.id.countDown);
-
-//    CountDownTimer tenSecTimer = new CountDownTimer(10000, 1000) {
-//        TextView countDown = findViewById(R.id.countDown);
-//        public void onTick(long millisUntilFinished) {
-//            countDown.setText("seconds remaining: " + millisUntilFinished / 1000);
-//        }
-//        TextView textView = findViewById(R.id.countDown);
-//
-//        public void onFinish() {
-//            countDown.setText("done!");
-//        }
-//    }.start();
+    
 
     public void screenTapped(View view) {
         counter++;
