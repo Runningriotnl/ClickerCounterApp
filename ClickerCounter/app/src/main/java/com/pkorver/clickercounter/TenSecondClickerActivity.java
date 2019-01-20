@@ -19,12 +19,32 @@ public class TenSecondClickerActivity extends AppCompatActivity {
 
         counterValue = (TextView) findViewById(R.id.value);
     }
-    
+
 
     public void screenTapped(View view) {
         counter++;
         counterValue.setText(Integer.toString(counter));
     }
 
+    //Declare timer
+    CountDownTimer cTimer = null;
+
+    //start timer function
+    void startTimer() {
+        cTimer = new CountDownTimer(30000, 1000) {
+            public void onTick(long millisUntilFinished) {
+            }
+            public void onFinish() {
+            }
+        };
+        cTimer.start();
+    }
+
+
+    //cancel timer
+    void cancelTimer() {
+        if(cTimer!=null)
+            cTimer.cancel();
+    }
 
 }
