@@ -9,7 +9,9 @@ import android.widget.TextView;
 public class TenSecondClickerActivity extends AppCompatActivity {
 
     TextView counterValue;
-    int counter = 0; // Counter starts at 0\
+    TextView countDownTimer;
+    int counter = 0; // Counter starts at 0
+    long timeLeft = 0;
 
 
     @Override
@@ -18,10 +20,12 @@ public class TenSecondClickerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ten_second_clicker);
 
         counterValue = (TextView) findViewById(R.id.value);
+        countDownTimer = (TextView) findViewById(R.id.countDown);
     }
 
 
     public void screenTapped(View view) {
+        if(timeLeft > 0)
         counter++;
         counterValue.setText(Integer.toString(counter));
     }
@@ -30,11 +34,17 @@ public class TenSecondClickerActivity extends AppCompatActivity {
     CountDownTimer cTimer = null;
 
     //start timer function
-    void startTimer() {
-        cTimer = new CountDownTimer(30000, 1000) {
+    public void startTimer(View view) {
+        counter = 0;
+        counterValue.setText("0");
+        cTimer = new CountDownTimer(10000, 1000) {
             public void onTick(long millisUntilFinished) {
+                countDownTimer.setText(Long.toString(millisUntilFinished / 1000));
+                timeLeft = millisUntilFinished;
             }
             public void onFinish() {
+                countDownTimer.setText("0");
+                timeLeft = 0;
             }
         };
         cTimer.start();
