@@ -10,6 +10,8 @@ public class TenSecondClickerActivity extends AppCompatActivity {
 
     TextView counterValue;
     TextView countDownTimer;
+    TextView highScore;
+    int highScoreInt = 0;
     int counter = 0; // Counter starts at 0
     long timeLeft = 0;
 
@@ -21,6 +23,7 @@ public class TenSecondClickerActivity extends AppCompatActivity {
 
         counterValue = (TextView) findViewById(R.id.value);
         countDownTimer = (TextView) findViewById(R.id.countDown);
+        highScore = (TextView) findViewById(R.id.highScore);
     }
 
 
@@ -45,6 +48,10 @@ public class TenSecondClickerActivity extends AppCompatActivity {
             public void onFinish() {
                 countDownTimer.setText("0");
                 timeLeft = 0;
+                if(counter > highScoreInt){
+                    highScore.setText("High Score :" + Integer.toString(counter));
+                    highScoreInt = counter;
+                }
             }
         };
         cTimer.start();
