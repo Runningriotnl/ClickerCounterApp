@@ -1,6 +1,8 @@
 package com.pkorver.clickercounter;
 
+import android.content.DialogInterface;
 import android.os.CountDownTimer;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -51,6 +53,7 @@ public class TenSecondClickerActivity extends AppCompatActivity {
                 if(counter > highScoreInt){
                     highScore.setText("High Score :" + Integer.toString(counter));
                     highScoreInt = counter;
+                    showResults();
                 }
             }
         };
@@ -62,6 +65,36 @@ public class TenSecondClickerActivity extends AppCompatActivity {
     void cancelTimer() {
         if(cTimer!=null)
             cTimer.cancel();
+    }
+
+    public void showResults() {
+        // Show the results in a dialog
+        createDialog();
+    }
+
+    private void createDialog() {
+        // Dialog to ask for confirmation on reset
+        AlertDialog.Builder resultDialog = new AlertDialog.Builder(this);
+        resultDialog.setMessage("You finished with " + Integer.toString(counter) + " clicks!\n" +
+                                "You averaged " + counter/10 + " clicks per second.");
+        // No cancel button, just yes or no
+        resultDialog.setCancelable(false);
+        resultDialog.setPositiveButton("Nice", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+        resultDialog.setNegativeButton("Not bad", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+        resultDialog.create().show();
+
     }
 
 }
