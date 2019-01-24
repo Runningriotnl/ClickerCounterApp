@@ -50,11 +50,8 @@ public class TenSecondClickerActivity extends AppCompatActivity {
             public void onFinish() {
                 countDownTimer.setText("0");
                 timeLeft = 0;
-                if(counter > highScoreInt){
-                    highScore.setText("High Score :" + Integer.toString(counter));
-                    highScoreInt = counter;
-                    showResults();
-                }
+
+                showResults();
             }
         };
         cTimer.start();
@@ -69,14 +66,48 @@ public class TenSecondClickerActivity extends AppCompatActivity {
 
     public void showResults() {
         // Show the results in a dialog
-        createDialog();
+        if(counter > highScoreInt){
+            highScore.setText("High Score :" + Integer.toString(counter));
+            highScoreInt = counter;
+            createDialogHighScore();
+
+        }
+        else {
+            createDialogNoHighScore();
+        }
     }
 
-    private void createDialog() {
+    private void createDialogHighScore() {
         // Dialog to ask for confirmation on reset
         AlertDialog.Builder resultDialog = new AlertDialog.Builder(this);
         resultDialog.setMessage("You finished with " + Integer.toString(counter) + " clicks!\n" +
-                                "You averaged " + counter/10 + " clicks per second.");
+                "That is a new high score, congratulations!\n" +
+                "You averaged " + counter/10 + " clicks per second.");
+        // No cancel button, just yes or no
+        resultDialog.setCancelable(false);
+        resultDialog.setPositiveButton("Nice", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+        resultDialog.setNegativeButton("Not bad", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+        resultDialog.create().show();
+
+    }
+
+    private void createDialogNoHighScore() {
+        // Dialog to ask for confirmation on reset
+        AlertDialog.Builder resultDialog = new AlertDialog.Builder(this);
+        resultDialog.setMessage("You finished with " + Integer.toString(counter) + " clicks!\n" +
+                "You averaged " + counter/10 + " clicks per second.");
         // No cancel button, just yes or no
         resultDialog.setCancelable(false);
         resultDialog.setPositiveButton("Nice", new DialogInterface.OnClickListener() {
