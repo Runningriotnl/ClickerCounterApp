@@ -2,6 +2,7 @@ package com.pkorver.clickercounter;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,6 +20,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SharedPreferences pref = this.getSharedPreferences();
+        int count = pref.getInt("your key", 0) //0 is default value.
+        count++;
+
+        SharedPreferences.Editor edit = pref.edit();
+        edit.putInt("your key", count);
+        edit.commit();
+// display current count
 
         counterValue = (TextView) findViewById(R.id.value);
 
