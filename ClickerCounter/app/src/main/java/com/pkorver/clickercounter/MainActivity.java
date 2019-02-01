@@ -22,11 +22,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         SharedPreferences pref = this.getSharedPreferences();
-        int count = pref.getInt("your key", 0) //0 is default value.
-        count++;
+        //int count = pref.getInt("your key", 0) //0 is default value.
+        //count++;
 
         SharedPreferences.Editor edit = pref.edit();
-        edit.putInt("your key", count);
+        //edit.putInt("your key", count);
         edit.commit();
 // display current count
 
