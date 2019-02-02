@@ -1,5 +1,6 @@
 package com.pkorver.clickercounter;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -21,13 +22,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SharedPreferences pref = this.getSharedPreferences();
-        //int count = pref.getInt("your key", 0) //0 is default value.
-        //count++;
-
-        SharedPreferences.Editor edit = pref.edit();
-        //edit.putInt("your key", count);
-        edit.commit();
+        SharedPreferences prefs = getSharedPreferences("Share", Context.MODE_PRIVATE );
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("Value", 1 );
+        editor.commit();
 // display current count
 
         counterValue = (TextView) findViewById(R.id.value);
