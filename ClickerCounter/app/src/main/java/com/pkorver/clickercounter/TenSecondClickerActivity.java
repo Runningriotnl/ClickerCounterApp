@@ -72,10 +72,10 @@ public class TenSecondClickerActivity extends AppCompatActivity {
     public void showResults() {
         // Show the results in a dialog
         if(counter > highScoreInt){
+            createDialogHighScore();
             enterHighScoreName();
             highScore.setText("High Score :" + Integer.toString(counter));
             highScoreInt = counter;
-            createDialogHighScore();
 
         }
         else {
@@ -149,7 +149,7 @@ public class TenSecondClickerActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int i) {
                 highScoreHolder = input.getText().toString();
-                highScoreName.setText("Name : " + highScoreHolder);
+                highScoreName.setText("You got the highscore, enter your name : " + highScoreHolder);
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
